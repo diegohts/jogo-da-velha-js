@@ -5,7 +5,7 @@ var quadrados = document.getElementsByClassName('quadrado');
 
 mudarJogador('X');
 
-function escolherQuadrado(id) {
+function escolherQuadrado(id){
 
     if(vencedor !== null) {
         return;
@@ -29,12 +29,22 @@ function escolherQuadrado(id) {
     checarVencedor();
 }
 
-function mudarJogador(valor) {
+function mudarJogador(valor){
     jogador = valor;
     jogadorSelecionado.innerHTML = jogador;
 }
 
-function checarVencedor() {
+function checarSequencia(quadrado1, quadrado2, quadrado3){
+    var eigual = false;
+
+    if(quadrado1.innerHTML !== '-' && quadrado1.innerHTML === quadrado2.innerHTML && quadrado2.innerHTML === quadrado3.innerHTML){
+        eigual = true;
+    }
+
+    return eigual;
+}
+
+function checarVencedor(){
     quadrado1 = document.getElementById(1);
     quadrado2 = document.getElementById(2);
     quadrado3 = document.getElementById(3);
@@ -70,16 +80,6 @@ function checarVencedor() {
         mudarCorQuadrado(quadrado3,quadrado5,quadrado7);
         mudarVencedor(quadrado1);
     } 
-}
-
-function checarSequencia(quadrado1, quadrado2, quadrado3) {
-    var eigual = false;
-
-    if(quadrado1.innerHTML !== '-' && quadrado1.innerHTML === quadrado2.innerHTML && quadrado2.innerHTML === quadrado3.innerHTML){
-        eigual = true;
-    }
-
-    return eigual;
 }
 
 function mudarCorQuadrado(quadrado1, quadrado2, quadrado3){
