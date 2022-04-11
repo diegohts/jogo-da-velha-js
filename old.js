@@ -6,6 +6,11 @@ var quadrados = document.getElementsByClassName('quadrado');
 mudarJogador('X');
 
 function escolherQuadrado(id) {
+
+    if(vencedor !== null) {
+        return;
+    }
+
     var quadrado = document.getElementById(id);
     if(quadrado.innerHTML !== '-') {
         return;
@@ -86,4 +91,17 @@ function mudarCorQuadrado(quadrado1, quadrado2, quadrado3){
 function mudarVencedor(quadrado){
     vencedor = quadrado.innerHTML;
     vencedorSelecionado.innerHTML = vencedor;
+}
+
+function reiniciar(){
+    vencedor = null;
+    vencedorSelecionado.innerHTML = '';
+
+    for(var i = 1; i <= 9; i++){
+        var quadrado = document.getElementById(i);
+        quadrado.style.background = '#eee';
+        quadrado.style.color = '#eee';
+        quadrado.innerHTML = '-';
+    }
+    mudarJogador('X');
 }
