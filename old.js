@@ -103,5 +103,6 @@ function reiniciar(){
         quadrado.style.color = '#eee';
         quadrado.innerHTML = '-';
     }
+    
     mudarJogador('X');
 }
